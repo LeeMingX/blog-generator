@@ -226,3 +226,30 @@ MDN是开发者的资源，由开发者社区和技术作者以及其它网络�
 * `<applet>`
 
 `<input>`元素可替换，因为image类型的input就像`<img>`一样被替换，但其它形式的控制元素，包括其它类型的`<input>`元素，被明确地列为非可替换元素
+
+## 部分标签详解
+
+* `<iframe>`
+    1. 嵌套其它页面，是可替换元素
+    2. 和a元素一起用，a标签的target属性可以写为iframe的name属性值，则点击a标签，iframe会显示a标签写的链接指向的网站内容
+    3. frameboader属性设置iframe的边框，src属性可以填写相对路径
+* `<a>`
+    1. a标签的target属性：_blank-在新页面打开 _self-在当前页面打开 _parent-在父页面打开 _top-在继承层次最顶层打开
+    2. download属性表示这个链接是用来下载的，如果把这个链接的http响应的Content-type写成application/octet-stream，就可以下载这个资源
+    3. href需要写协议（http，https），//表示页面使用当前协议不全链接，直接写某个文件会直接跳转，写?k=v会在当前链接后加请求参数发送请求，只有锚点（#）不会发请求，伪协议（eg. javascript: alert('hello')），点击链接会执行js脚本，点击a标签页面不动可以使用这种方法
+* `<form>`
+    1. 跳转页面（post请求），相对于a标签发送get请求，post更多发送post请求，但是post也可以发送get请求，这样的话请求内容会显示在请求的url中
+    2. form如果没有提交按钮那么无法发送请求。需要一个type属性为空或submit的button或type为submit的input来提交form
+    3. input的name属性值就是post请求提交信息的key，method=post
+    4. target属性和a标签作用相同
+* `<input>`：
+    1. form里只有一个button，会自动升级为提交按钮（没有type属性），如果写了type（button）就不会升级，type属性的submit唯一确定是否按钮为提交按钮。
+    2. checkbox，标签右边可以写一个label，label的内容和checkbox相对应，label的for属性为checkbox的id，这样点击lable的文本时checkbox会被选中。label标签把input标签包起来可以不通过for和id的组合来实现上述功能。checkbox的value属性可以被带到请求信息中去。
+    3. radiobox，value属性和checkbox相同，给多个radio给一个name就可以保证只能点一个
+    4. select，option可以通过disabled禁用选择，selected默认选择，没有value属性则请求内容里不会出现，select的multiple属性设置后可以选择多个选项
+* `<textarea>`
+    1. 默认可以拖动调大小，可以通过css来禁止挪动，即`resize:none`，可以通过row和col或css来调整大小
+* `<table>`
+    1. `<colgroup><col>`可以控制每一列的属性，col的bgcolor属性可以设置列颜色，width设置宽度
+    2. tfoot thead tbody的显示顺序是不会变的，这三个都可以省略。
+    3. table的border是可以合并起来的，通过css来实现，`border-collapse: collapse`来设置
