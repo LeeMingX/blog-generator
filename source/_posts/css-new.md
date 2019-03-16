@@ -92,6 +92,8 @@ div中有多个span时，最高的span多高，决定div的高度
 
 height/width 最好不用
 
+内联元素左右padding没有用，上下padding有用，居中需要设置父元素的`text-align: center`
+
 ### 给背景图片加一个透明效果
 
 在图片上加一个div，设置`background-color: rgb(0,0,0,0.8)`
@@ -112,7 +114,7 @@ height/width 最好不用
 
 ### iconfont.cn
 
-### vertical-align: top
+### vertical-align: top要配合inline-block使用
 
 svg图在div中会偏上，设置此属性可以正常
 
@@ -122,6 +124,22 @@ svg图在div中会偏上，设置此属性可以正常
 
 content-box为浏览器默认行为，只计算元素内容宽高，不包括padding, border, or margin，边框会加到最终渲染宽度，border-box会使计算机计算任一个元素的边框进元素宽高，包括 the content, padding, and border, but do not include the margin
 
-### ::before/::after
+## 伪元素
+
+断子绝孙的元素就是空元素
+
+所有的非空标签都有伪类，`::before`和`::after`
 
 创建一个伪元素，是选择元素的第一个子元素，经常通过content守护星被用来加装饰性内容到该元素，默认这个元素是inline的
+
+`position: absolute`给定之后自动显示为block
+
+### 如果父元素高度确定，则子元素可以直接写100%
+
+## 伪类
+
+表状态的类都是伪类，在特定情况下才能被选中 `:hover`类似
+
+## 类选择器和ID选择器
+
+类选择器选择一类相同特性的元素，id选择器选择唯一的元素
