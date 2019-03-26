@@ -99,3 +99,4 @@ object 中还可以存在 object，key 只能是字符串，如果 key 不加引
 `for(var k in person) { console.log(person[k]) }` 使用`for-in`来遍历对象的 key
 
 使用`typeof`来查看某个变量的类型，类型都是字符串类型，`typeof null // “object”` 属于 bug，`typeof function // "function"` 属于 bug
+
